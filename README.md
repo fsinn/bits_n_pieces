@@ -1,4 +1,4 @@
 # Bits and Pieces
 
-Dieses Repository hält Codeschnipsel, dotfiles, Einstellungen und was auch immer, die während der Arbeit bei diva-e entstanden sind.
+This repository holds code snippets, dotfiles, scripts and other stuff that I use at work and in private.
 
