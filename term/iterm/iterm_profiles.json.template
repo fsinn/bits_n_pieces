@@ -1,5 +1,7 @@
 {
-  "Working Directory" : "\/Users\/${ITERM_USER}",
+"Profiles": [
+{
+  "Working Directory" : "\/Users\/:ITERM_USER:",
   "Prompt Before Closing 2" : false,
   "Selected Text Color" : {
     "Green Component" : 0.56485837697982788,
@@ -470,4 +472,6 @@
     "Red Component" : 0.77738940715789795
   },
   "ASCII Ligatures" : false
+}
+]
 }
