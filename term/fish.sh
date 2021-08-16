@@ -38,11 +38,16 @@ function backup() {
 }
 
 function install() {
-    log_info "Installing fish and setting it as default shell..."
+    log_info "Installing fish and setting it as default shell (old: ${bak_shell})..."
 
     brew install -q fish
     which fish | sudo tee -a /etc/shells >/dev/null || cleanup "Adding fish to /etc/shells failed"
     chsh -s "$(which fish)" || cleanup "Making fish the default shell failed"
+
+    log_info "Installing oh-my-fish..."
+    curl -L https://get.oh-my.fish > install.fish
+    fish install.fish --path=~/.local/share/omf --config=~/.config/omf --noninteractive
+    rm install.fish
 }
 
 setup_colors
