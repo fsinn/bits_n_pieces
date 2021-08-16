@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# set -x
-
 script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
 
 bak_dir="$HOME"/.bits_n_pieces/bak
