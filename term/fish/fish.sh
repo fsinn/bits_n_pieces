@@ -43,12 +43,20 @@ function install() {
     log_info "Installing fish and setting it as default shell (old: ${bak_shell})..."
 
     brew install -q fish
-    which fish | sudo tee -a /etc/shells >/dev/null
+
+    if ! grep -q "$(which fish)" /etc/shells
+    then
+        which fish | sudo tee -a /etc/shells >/dev/null
+    fi
+
     chsh -s "$(which fish)"
 
     log_info "Installing oh-my-fish..."
     curl -L https://get.oh-my.fish > install.fish
-    fish install.fish --noninteractive --path=${fish_path} --config=${fish_config}
+    if ! fish install.fish --check
+    then
+        fish install.fish --noninteractive --path=${fish_path} --config=${fish_config}
+    fi
     rm install.fish
 }
 
