@@ -7,8 +7,9 @@ brew not found. Install it using
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 EOF
-
 fi
 
-brew tap homebrew/cask-fonts
-brew install --cask font-hack-nerd-font
+script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
+
+("${script_dir}"/fonts/fonts.sh)
+("${script_dir}"/term/fish/fish.sh)
