@@ -1,6 +1,35 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/linux,macos,windows,intellij+all,visualstudiocode,vim,git
-# Edit at https://www.toptal.com/developers/gitignore?templates=linux,macos,windows,intellij+all,visualstudiocode,vim,git
+# Created by https://www.toptal.com/developers/gitignore/api/vim,git,linux,macos,windows,intellij+all,visualstudiocode,ansible,ansibletower
+# Edit at https://www.toptal.com/developers/gitignore?templates=vim,git,linux,macos,windows,intellij+all,visualstudiocode,ansible,ansibletower
+
+### Ansible ###
+*.retry
+
+### AnsibleTower ###
+# Ansible runtime and backups
+*.original
+*.tmp
+*.bkp
+*.*~
+
+# Tower runtime roles
+roles/**
+!roles/requirements.yml
+
+# Avoid plain-text passwords
+*pwd*
+*pass*
+*password*
+*.txt
+
+# Exclude all binaries
+*.bin
+*.jar
+*.tar
+*.zip
+*.gzip
+*.tgz
+
 
 ### Git ###
 # Created by git for backups. To disable backups in Git:
@@ -215,4 +244,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,intellij+all,visualstudiocode,vim,git
+# End of https://www.toptal.com/developers/gitignore/api/vim,git,linux,macos,windows,intellij+all,visualstudiocode,ansible,ansibletower
