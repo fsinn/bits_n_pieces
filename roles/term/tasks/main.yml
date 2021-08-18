@@ -2,8 +2,8 @@
 - name: Copy iterm2 dynamic profile
   template:
     src: iterm_profiles.json.j2
-    dest: "{{ ansible_env.HOME }}/Library/ApplicationSupport/iTerm2/DynamicProfiles/iterm_profiles.json"
+    dest: "{{ cli_home }}/Library/ApplicationSupport/iTerm2/DynamicProfiles/iterm_profiles.json"
     mode: '0644'
-    owner: "{{ ansible_env.USER }}"
+    owner: "{{ cli_user }}"
   vars:
-    working_directory: "{{ ansible_env.HOME | regex_replace('/', '\/') }}"
+    working_directory: "{{ cli_home | regex_replace('/', '\/') }}"
