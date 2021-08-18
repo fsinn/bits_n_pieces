@@ -16,4 +16,4 @@ else
     echo "Ansible already installed. Skipping..."
 fi
 
-ansible-playbook cli-playbook.yml
+ansible-playbook -v cli-playbook.yml
