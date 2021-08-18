@@ -1,0 +1,13 @@
+---
+
+- name: Create installation dotdir
+  file:
+    path: "{{ cli_home }}/.cli"
+    state: directory
+    mode: '0755'
+    owner: "{{ cli_user }}"
+  register: cli_dir
+
+- name: Set installation directory variable
+  set_fact:
+    cli_install_dir: "{{ cli_dir.path }}"

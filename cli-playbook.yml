@@ -2,9 +2,7 @@
 
 - name: Install CLI
   hosts: localhost
-  # tasks:
-  #   - name: Show ansible_env
-  #     debug: var=ansible_env
   roles:
+    - common
     - tools
     - term
