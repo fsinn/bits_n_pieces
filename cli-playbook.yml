@@ -2,3 +2,5 @@
 
 - name: Install CLI
   hosts: localhost
+  roles:
+    - tools
