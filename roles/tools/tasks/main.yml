@@ -1,22 +1,23 @@
 ---
 - name: Copy Brewfile
-  copy:
+  ansible.builtin.copy:
     src: Brewfile
-    dest: "{{ ansible_env.HOME }}/.Brewfile"
+    dest: "{{ cli_home }}/.Brewfile"
     mode: '0644'
+    owner: "{{ cli_user }}"
 
 - name: Apply Brewfile
-  command:
+  ansible.builtin.command:
     argv:
       - brew
       - bundle
       - install
       - --file
-      - "{{ ansible_env.HOME }}/.Brewfile"
-    removes: "{{ ansible_env.HOME }}/.Brewfile"
+      - "{{ cli_home }}/.Brewfile"
+    removes: "{{ cli_home }}/.Brewfile"
     creates: /Applications/iTerm.app
 
 - name: Remove Brewfile
-  file:
-    path: "{{ ansible_env.HOME }}/.Brewfile"
+  ansible.builtin.file:
+    path: "{{ cli_home }}/.Brewfile"
     state: absent
