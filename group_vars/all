@@ -1,0 +1,2 @@
+cli_user: "{{ ansible_env.USER }}"
+cli_home: "{{ ansible_env.HOME }}"
