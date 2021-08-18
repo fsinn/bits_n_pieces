@@ -2,7 +2,7 @@
 - name: Copy Brewfile
   copy:
     src: Brewfile
-    dest: "{{ cli_home }}/.Brewfile"
+    dest: "{{ cli_install_dir }}/Brewfile"
     mode: '0644'
     owner: "{{ cli_user }}"
 
@@ -13,6 +13,6 @@
       - bundle
       - install
       - --file
-      - "{{ cli_home }}/.Brewfile"
-    removes: "{{ cli_home }}/.Brewfile"
+      - "{{ cli_install_dir }}/Brewfile"
+    removes: "{{ cli_install_dir }}/Brewfile"
     creates: /Applications/iTerm.app
