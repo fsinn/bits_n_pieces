@@ -17,7 +17,7 @@
   changed_when: False
 
 - name: Get current user shell
-  shell: "set -o pipefail && dscl . -read ~ UserShell | sed 's/UserShell: //'"
+  shell: "set -o pipefail && dscl . -read {{ cli_home | quote }} UserShell | sed 's/UserShell: //'"
   register: cli_current_shell
   changed_when: False
 
