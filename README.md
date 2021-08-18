@@ -1,13 +1,23 @@
-# CLI 
+# CLI
 
-This repository holds code snippets, dotfiles, scripts and other stuff that I use at work and in private.
+This repository installs my development environment that I use at work and in private.
+The installation is orchestrated using ansible.
+Homebrew is used to install all neccessary tools.
+
+**WARNING**: This installer is experimental and only targets MacOS for now.
+Use at your own risk.
+
+# How to install
 
 # iTerm2
 
 The iTerm2 dynamic profiles feature is used to automatically load profiles to iTerm2.
-After installing _bits'n'pieces_, please make sure to select the iterm profile and make it default.
+After installing _cli_, please make sure to select the iterm profile and make it default.
 
-To do that, open `iTerm2 -> Preferences -> Profiles` (or, `⌘ + ;`), select the _iterm_ profile, click `Other Actions...`, and finally _Set as Default_.
+To do that, open `iTerm2 -> Preferences -> Profiles` (or, `command(⌘) + ;`), select the _iterm_ profile, click `Other Actions...`, and finally _Set as Default_.
+
+To show or hide all windows, thus quickly switching between iTerm2 and other applications, go to `iTerm2 -> Preferences -> Keys -> Hotkeys` and select the checkbox _Show/hide all windows with a system-wide hotkey_.
+Afterwards, set the hotkey: I personally prefer `control(^) + ^`, but use whatever works for you.
 
 # Resources
 
