@@ -1,0 +1,20 @@
+---
+
+- name: Create VSCode user settings directory
+  file:
+    path: "{{ cli_home }}/Library/Application\ Support/Code/User"
+    state: directory
+    mode: '0754'
+    owner: "{{ cli_user }}"
+  register: cli_vscode_settings
+
+- name: Set vscode user settings directory variable
+  set_fact:
+    cli_vscode_settings_dir: "{{ cli_vscode_settings.path }}"
+
+- name: Copy VSCode user settings
+  copy:
+    src: vsc_user_settings.json
+    dest: "{{ cli_vscode_settings_dir }}/settings.json"
+    mode: '0644'
+    owner: "{{ cli_user }}"

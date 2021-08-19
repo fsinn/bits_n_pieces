@@ -4,7 +4,7 @@
   file:
     path: "{{ cli_home }}/.cli"
     state: directory
-    mode: '0755'
+    mode: '0754'
     owner: "{{ cli_user }}"
   register: cli_dir
 
