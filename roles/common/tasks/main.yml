@@ -1,13 +1,31 @@
 ---
-
 - name: Create installation dotdir
   file:
     path: "{{ cli_home }}/.cli"
     state: directory
-    mode: '0754'
+    mode: "0754"
     owner: "{{ cli_user }}"
   register: cli_dir
 
 - name: Set installation directory variable
   set_fact:
     cli_install_dir: "{{ cli_dir.path }}"
+
+- name: Check whether command line tools are already installed
+  command:
+    argv:
+      - xcode-select
+      - -p
+    chdir: /Applications/Utilities
+  ignore_errors: yes
+  register: cli_tools_installed
+  changed_when: False
+  failed_when: cli_tools_installed.rc != 0 and cli_tools_installed.rc != 2
+
+- name: Enable built-in git on MacOS
+  command:
+    argv:
+      - xcode-select
+      - --install
+    chdir: /Applications/Utilities
+  when: cli_tools_installed.rc == 2
