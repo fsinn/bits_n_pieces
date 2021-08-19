@@ -7,9 +7,7 @@
         "**/.factorypath": true
     },
     "editor.fontFamily": "Hack Nerd Font Mono",
-    "editor.inlineHints.fontFamily": "Monaco",
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "editor.fontSize": 20,
     "files.autoSave": "onFocusChange",
     "editor.renderWhitespace": "trailing",
@@ -44,5 +42,6 @@
         "!encrypted/pkcs1-oaep scalar",
         "!vault scalar"
     ],
-    "redhat.telemetry.enabled": false
+    "redhat.telemetry.enabled": false,
+    "ansible.validate.executablePath": "ansible-lint"
 }
