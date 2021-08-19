@@ -16,14 +16,6 @@
   vars:
     working_directory: "{{ cli_home | regex_replace('/', '\/') }}"
 
-- name: Get path to fish
-  command:
-    argv:
-      - which
-      - fish
-  register: cli_which_fish
-  changed_when: False
-
 - name: Get current user shell
   shell: "set -o pipefail && dscl . -read {{ cli_home | quote }} UserShell | sed 's/UserShell: //'"
   register: cli_current_shell
@@ -35,8 +27,7 @@
   lineinfile:
     path: /etc/shells
     state: present
-    line: "{{ cli_which_fish.stdout }}"
-  when: cli_which_fish.rc == 0
+    line: "{{ cli_fish_path }}"
 
 - name: Change current user shell to fish
   become: yes
@@ -45,11 +36,10 @@
     argv:
       - chsh
       - -s
-      - "{{ cli_which_fish.stdout }}"
+      - "{{ cli_fish_path }}"
       - "{{ cli_user }}"
-  when: cli_current_shell. rc == 0 and
-    cli_which_fish.rc == 0 and
-    cli_current_shell.stdout != cli_which_fish.stdout
+  when: cli_current_shell.rc == 0 and
+    cli_current_shell.stdout != cli_fish_path
 
 - name: Download Oh-my-fish
   get_url:
@@ -59,7 +49,8 @@
 - name: Install Oh-my-fish
   command:
     argv:
-      - fish
+      - "{{ cli_fish_path }}"
+      - -l
       - "{{ cli_install_dir }}/install.omf"
       - --noninteractive
       - "--path={{ cli_install_dir }}/.local/share/omf"

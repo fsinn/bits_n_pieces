@@ -26,6 +26,39 @@ To do that, open `iTerm2 -> Preferences -> Profiles` (or, `command(⌘) + ;`), s
 To show or hide all windows, thus quickly switching between iTerm2 and other applications, go to `iTerm2 -> Preferences -> Keys -> Hotkeys` and select the checkbox _Show/hide all windows with a system-wide hotkey_.
 Afterwards, set the hotkey: I personally prefer `control(^) + ^`, but use whatever works for you.
 
+# Virtual Box
+
+VirtualBox needs a Kernel Extension to be enabled in order to run correctly.
+To do so, you have to go to MacOS `System Preferences -> Security & Privacy` and unlock settings by clicking on the lock.
+Then, press the `Allow` next to a message similar to "System software from developer “Oracle America, Inc.” was blocked from loading.".
+
+# Testing
+
+Simply call `vagrant up` which will provision and start a MacOS Big Sur vagrant box.
+**Note**: The first time you do this will take quite long as the vagrant box is rather large and Homebrew needs to update
+
+Then run the playbook: `ansible-playbook -v -K -i hosts_vagrant.yml cli-playbook.yml`.
+The BECOME password is simply `vagrant`.
+Keep in mind that you need to confirm a UI dialog should you need to enable git.
+
+**Warning**: The box needs the Virtual Box Extension Pack.
+It is installed and you automatically agree to [its license](https://www.virtualbox.org/wiki/VirtualBox_PUEL)!
+
+# Ansible specifics
+
+Ansible's [command module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/command_module.html#synopsis) does not run through a shell.
+This may cause the commands to misbehave on remote targets.
+Thus, I specified fully-qualified paths to commands that are installed by brew, even though this might make the script "less portable".
+As I target MacOS, exclusively, this should not pose problems.
+The interesting thing is calling fish to install omf: I use the `-l` flag to run the command through a login shell to make it work.
+
+# Troubleshooting
+
+## Installation won't work or App won't start
+
+Make sure that you "Allow apps downloaded from" the "App Store and identifier developers" under MacOS `System Preferences -> Security & Privacy.
+I will not temporarily disable Gatekeeper during the installation.
+
 # Resources
 
 - [Toptal](https://www.toptal.com/developers/gitignore/api/linux,macos,windows,intellij+all,visualstudiocode,vim,git) for generating my .gitignore
