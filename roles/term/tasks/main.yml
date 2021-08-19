@@ -3,7 +3,7 @@
   file:
     path: "{{ cli_home }}/Library/Application\ Support/iTerm2/DynamicProfiles"
     state: directory
-    mode: '0700'
+    mode: "0700"
     owner: "{{ cli_user }}"
   register: cli_iterm_profiles_dir
 
@@ -11,7 +11,7 @@
   template:
     src: iterm_profiles.json.j2
     dest: "{{ cli_iterm_profiles_dir.path }}/iterm_profiles.json"
-    mode: '0700'
+    mode: "0700"
     owner: "{{ cli_user }}"
   vars:
     working_directory: "{{ cli_home | regex_replace('/', '\/') }}"
@@ -48,8 +48,8 @@
       - "{{ cli_which_fish.stdout }}"
       - "{{ cli_user }}"
   when: cli_current_shell. rc == 0 and
-        cli_which_fish.rc == 0 and
-        cli_current_shell.stdout != cli_which_fish.stdout
+    cli_which_fish.rc == 0 and
+    cli_current_shell.stdout != cli_which_fish.stdout
 
 - name: Download Oh-my-fish
   get_url:
@@ -70,21 +70,3 @@
   get_url:
     url: https://iterm2.com/shell_integration/fish
     dest: "{{ cli_install_dir }}/.iterm2_shell_integration.fish"
-
-- name: Copy Oh-my-fish configuration
-  copy:
-    src: omf
-    dest: "{{ cli_install_dir }}/.config"
-    mode: '0644'
-    owner: "{{ cli_user }}"
-
-- name: Install fish.init with iTerm2 integration support
-  template:
-    src: init.fish.j2
-    dest: "{{ cli_install_dir }}/.config/omf/init.fish"
-    mode: '0644'
-    owner: "{{ cli_user }}"
-
-  # vars:
-  #   fish_path: "{{ cli_home }}/.local/share/omf"
-  #   fish_config: "{{ cli_home }}/.config/omf"
