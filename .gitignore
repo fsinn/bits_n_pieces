@@ -1,35 +1,9 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/vim,git,linux,macos,windows,intellij+all,visualstudiocode,ansible,ansibletower
-# Edit at https://www.toptal.com/developers/gitignore?templates=vim,git,linux,macos,windows,intellij+all,visualstudiocode,ansible,ansibletower
+# Created by https://www.toptal.com/developers/gitignore/api/vim,git,linux,macos,vagrant,ansible,windows,intellij+all,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=vim,git,linux,macos,vagrant,ansible,windows,intellij+all,visualstudiocode
 
 ### Ansible ###
 *.retry
-
-### AnsibleTower ###
-# Ansible runtime and backups
-*.original
-*.tmp
-*.bkp
-*.*~
-
-# Tower runtime roles
-# roles/**
-# !roles/requirements.yml
-
-# Avoid plain-text passwords
-*pwd*
-*pass*
-*password*
-*.txt
-
-# Exclude all binaries
-*.bin
-*.jar
-*.tar
-*.zip
-*.gzip
-*.tgz
-
 
 ### Git ###
 # Created by git for backups. To disable backups in Git:
@@ -182,6 +156,16 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+### Vagrant ###
+# General
+.vagrant/
+
+# Log files (if you are creating logs in debug mode, uncomment this)
+# *.log
+
+### Vagrant Patch ###
+*.box
+
 ### Vim ###
 # Swap
 [._]*.s[a-v][a-z]
@@ -244,4 +228,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/vim,git,linux,macos,windows,intellij+all,visualstudiocode,ansible,ansibletower
+# End of https://www.toptal.com/developers/gitignore/api/vim,git,linux,macos,vagrant,ansible,windows,intellij+all,visualstudiocode

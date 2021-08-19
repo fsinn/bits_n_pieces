@@ -1,7 +1,6 @@
 ---
-
 - name: Install CLI
-  hosts: localhost
+  hosts: all
   roles:
     - common
     - tools
