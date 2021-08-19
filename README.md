@@ -9,6 +9,13 @@ Use at your own risk.
 
 # How to install
 
+Simply execute `./install.sh` from the repository root.
+It will install brew and ansible, the two prerequisites, and then start the ansible playbook.
+
+**NOTE** You will be prompted to install Apple's Command Line Tools if not already installed.
+This will open a popup and you will have to agree to License Agreements.
+While this is not required for the installation to succeed, I would still recommend doing so in order to be able to use git.
+
 # iTerm2
 
 The iTerm2 dynamic profiles feature is used to automatically load profiles to iTerm2.
