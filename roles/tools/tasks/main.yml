@@ -12,7 +12,9 @@
       - brew
       - bundle
       - install
+      - -q
+      - --cleanup
+      - --force
       - --file
       - "{{ cli_install_dir }}/Brewfile"
     removes: "{{ cli_install_dir }}/Brewfile"
-    creates: /Applications/iTerm.app
