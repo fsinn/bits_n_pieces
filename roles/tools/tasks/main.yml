@@ -9,7 +9,7 @@
 - name: Apply Brewfile
   command:
     argv:
-      - brew
+      - /usr/local/bin/brew
       - bundle
       - install
       - -q
