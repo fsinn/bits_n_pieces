@@ -1,6 +1,9 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/linux,macos,windows,intellij+all,visualstudiocode,vim,git
-# Edit at https://www.toptal.com/developers/gitignore?templates=linux,macos,windows,intellij+all,visualstudiocode,vim,git
+# Created by https://www.toptal.com/developers/gitignore/api/vim,git,linux,macos,vagrant,ansible,windows,intellij+all,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=vim,git,linux,macos,vagrant,ansible,windows,intellij+all,visualstudiocode
+
+### Ansible ###
+*.retry
 
 ### Git ###
 # Created by git for backups. To disable backups in Git:
@@ -153,6 +156,16 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+### Vagrant ###
+# General
+.vagrant/
+
+# Log files (if you are creating logs in debug mode, uncomment this)
+# *.log
+
+### Vagrant Patch ###
+*.box
+
 ### Vim ###
 # Swap
 [._]*.s[a-v][a-z]
@@ -215,4 +228,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,intellij+all,visualstudiocode,vim,git
+# End of https://www.toptal.com/developers/gitignore/api/vim,git,linux,macos,vagrant,ansible,windows,intellij+all,visualstudiocode

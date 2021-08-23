@@ -1,0 +1,47 @@
+{
+    "window.zoomLevel": 1,
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "editor.fontFamily": "Hack Nerd Font Mono",
+    "editor.suggestSelection": "first",
+    "editor.fontSize": 20,
+    "files.autoSave": "onFocusChange",
+    "editor.renderWhitespace": "trailing",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "diffEditor.codeLens": true,
+    "editor.minimap.enabled": false,
+    "files.hotExit": "off",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "debug.console.fontSize": 16,
+    "terminal.integrated.fontSize": 20,
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.defaultProfile.osx": "fish",
+    "terminal.integrated.scrollback": 10000,
+    "workbench.colorTheme": "Solarized Dark",
+    "terminal.integrated.drawBoldTextInBrightColors": false,
+    "markdown.preview.fontSize": 16,
+    "editor.smoothScrolling": true,
+    "workbench.list.smoothScrolling": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust"
+    },
+    "explorer.confirmDelete": false,
+    "yaml.customTags": [
+        "!encrypted/pkcs1-oaep scalar",
+        "!vault scalar"
+    ],
+    "redhat.telemetry.enabled": false,
+    "ansible.validate.executablePath": "ansible-lint"
+}
