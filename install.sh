@@ -2,7 +2,7 @@
 
 if ! command -v brew &> /dev/null
 then
-    echo "Installing brew first..."
+    echo "Installing brew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
     echo "Brew already installed. Skipping..."
@@ -10,7 +10,7 @@ fi
 
 if ! command -v ansible &> /dev/null
 then
-    echo "Installing ansible first..."
+    echo "Installing ansible..."
     brew install -q ansible ansible-lint
 else
     echo "Ansible already installed. Skipping..."
