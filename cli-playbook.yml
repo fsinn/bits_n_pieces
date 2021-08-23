@@ -1,6 +1,15 @@
 ---
 - name: Install CLI
   hosts: all
+  vars_prompt:
+    - name: cli_mail
+      prompt: Enter your mail address (for git commits)
+      private: no
+      unsafe: yes
+    - name: cli_commit_name
+      prompt: Enter your full/nick name (for git commits)
+      private: no
+      unsafe: yes
   roles:
     - common
     - tools
