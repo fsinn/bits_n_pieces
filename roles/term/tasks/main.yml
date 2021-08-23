@@ -3,7 +3,7 @@
   file:
     path: "{{ cli_home }}/Library/Application\ Support/iTerm2/DynamicProfiles"
     state: directory
-    mode: "0700"
+    mode: "0754"
     owner: "{{ cli_user }}"
   register: cli_iterm_profiles_dir
 
@@ -11,7 +11,7 @@
   template:
     src: iterm_profiles.json.j2
     dest: "{{ cli_iterm_profiles_dir.path }}/iterm_profiles.json"
-    mode: "0700"
+    mode: "0644"
     owner: "{{ cli_user }}"
   vars:
     working_directory: "{{ cli_home | regex_replace('/', '\/') }}"

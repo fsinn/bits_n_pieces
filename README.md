@@ -23,7 +23,7 @@ After installing _cli_, please make sure to select the iterm profile and make it
 
 To do that, open `iTerm2 -> Preferences -> Profiles` (or, `command(⌘) + ;`), select the _iterm_ profile, click `Other Actions...`, and finally _Set as Default_.
 
-To show or hide all windows, thus quickly switching between iTerm2 and other applications, go to `iTerm2 -> Preferences -> Keys -> Hotkeys` and select the checkbox _Show/hide all windows with a system-wide hotkey_.
+To show or hide all iTerm2 windows, thus quickly switching between iTerm2 and other applications, go to `iTerm2 -> Preferences -> Keys -> Hotkeys` and select the checkbox _Show/hide all windows with a system-wide hotkey_.
 Afterwards, set the hotkey: I personally prefer `control(^) + ^`, but use whatever works for you.
 
 # Virtual Box
@@ -37,7 +37,7 @@ Then, press the `Allow` next to a message similar to "System software from devel
 Simply call `vagrant up` which will provision and start a MacOS Big Sur vagrant box.
 **Note**: The first time you do this will take quite long as the vagrant box is rather large and Homebrew needs to update
 
-Then run the playbook: `ansible-playbook -v -K -i hosts_vagrant.yml cli-playbook.yml`.
+Then run the playbook on your local machine: `ansible-playbook -v -K -i hosts_vagrant.yml cli-playbook.yml`.
 The BECOME password is simply `vagrant`.
 Keep in mind that you need to confirm a UI dialog should you need to enable git.
 
@@ -50,11 +50,11 @@ Ansible's [command module](https://docs.ansible.com/ansible/latest/collections/a
 This may cause the commands to misbehave on remote targets.
 Thus, I specified fully-qualified paths to commands that are installed by brew, even though this might make the script "less portable".
 As I target MacOS, exclusively, this should not pose problems.
-The interesting thing is calling fish to install omf: I use the `-l` flag to run the command through a login shell to make it work.
+The interesting thing is calling `fish` to install omf: I use the `-l` flag to run the command through a login shell to make it work.
 
 # Troubleshooting
 
-## Installation won't work or App won't start
+## Installation won't work or Vagrant won't start VirtualBox
 
 Make sure that you "Allow apps downloaded from" the "App Store and identifier developers" under MacOS `System Preferences -> Security & Privacy.
 I will not temporarily disable Gatekeeper during the installation.
