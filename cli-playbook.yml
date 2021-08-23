@@ -1,0 +1,8 @@
+---
+- name: Install CLI
+  hosts: all
+  roles:
+    - common
+    - tools
+    - term
+    - settings

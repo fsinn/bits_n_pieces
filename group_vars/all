@@ -1,0 +1,3 @@
+cli_user: "{{ ansible_env.USER }}"
+cli_home: "{{ ansible_env.HOME }}"
+cli_fish_path: "/usr/local/bin/fish"

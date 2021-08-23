@@ -1,0 +1,63 @@
+---
+- name: Create DynamicProfiles directory
+  file:
+    path: "{{ cli_home }}/Library/Application\ Support/iTerm2/DynamicProfiles"
+    state: directory
+    mode: "0754"
+    owner: "{{ cli_user }}"
+  register: cli_iterm_profiles_dir
+
+- name: Copy iterm2 dynamic profile
+  template:
+    src: iterm_profiles.json.j2
+    dest: "{{ cli_iterm_profiles_dir.path }}/iterm_profiles.json"
+    mode: "0644"
+    owner: "{{ cli_user }}"
+  vars:
+    working_directory: "{{ cli_home | regex_replace('/', '\/') }}"
+
+- name: Get current user shell
+  shell: "set -o pipefail && dscl . -read {{ cli_home | quote }} UserShell | sed 's/UserShell: //'"
+  register: cli_current_shell
+  changed_when: False
+
+- name: Append fish path to /etc/shells
+  become: yes
+  become_method: sudo
+  lineinfile:
+    path: /etc/shells
+    state: present
+    line: "{{ cli_fish_path }}"
+
+- name: Change current user shell to fish
+  become: yes
+  become_method: sudo
+  command:
+    argv:
+      - chsh
+      - -s
+      - "{{ cli_fish_path }}"
+      - "{{ cli_user }}"
+  when: cli_current_shell.rc == 0 and
+    cli_current_shell.stdout != cli_fish_path
+
+- name: Download Oh-my-fish
+  get_url:
+    url: https://get.oh-my.fish
+    dest: "{{ cli_install_dir }}/install.omf"
+
+- name: Install Oh-my-fish
+  command:
+    argv:
+      - "{{ cli_fish_path }}"
+      - -l
+      - "{{ cli_install_dir }}/install.omf"
+      - --noninteractive
+      - "--path={{ cli_install_dir }}/.local/share/omf"
+      - "--config={{ cli_install_dir }}/.config/omf"
+    creates: "{{ cli_install_dir }}/.local/share/omf/*"
+
+- name: Install iTerm2 integration for fish
+  get_url:
+    url: https://iterm2.com/shell_integration/fish
+    dest: "{{ cli_install_dir }}/.iterm2_shell_integration.fish"
