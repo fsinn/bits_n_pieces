@@ -3,7 +3,7 @@
   copy:
     src: Brewfile
     dest: "{{ cli_install_dir }}/Brewfile"
-    mode: '0644'
+    mode: "0644"
     owner: "{{ cli_user }}"
 
 - name: Apply Brewfile
@@ -36,3 +36,10 @@
     - svelte.svelte-vscode
     - timonwong.shellcheck
     - zbr.vscode-ansible
+
+- name: Install remove gone git branches script
+  copy:
+    src: git-remove-branches.sh
+    dest: /usr/local/bin/git-remove-branches.sh
+    mode: "0755"
+    owner: "{{ cli_user }}"
