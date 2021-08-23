@@ -31,3 +31,10 @@
     dest: "{{ cli_vscode_settings_dir }}/settings.json"
     mode: "0644"
     owner: "{{ cli_user }}"
+
+- name: Install .gitconfig
+  template:
+    src: .gitconfig.j2
+    dest: "{{ cli_home }}/.gitconfig"
+    mode: "0644"
+    owner: "{{ cli_user }}"
