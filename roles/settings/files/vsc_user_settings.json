@@ -43,5 +43,8 @@
         "!vault scalar"
     ],
     "redhat.telemetry.enabled": false,
-    "ansible.validate.executablePath": "ansible-lint"
+    "ansible.validate.executablePath": "ansible-lint",
+    "[yaml]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
