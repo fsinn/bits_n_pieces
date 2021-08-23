@@ -18,3 +18,21 @@
       - --file
       - "{{ cli_install_dir }}/Brewfile"
     removes: "{{ cli_install_dir }}/Brewfile"
+
+- name: Install VSCode extension
+  command:
+    argv:
+      - /usr/local/bin/code
+      - --install-extension
+      - "{{ item }}"
+    creates: "{{ cli_home }}/.vscode/extensions/{{ item }}-*"
+  loop:
+    - esbenp.prettier-vscode
+    - ms-python.python
+    - ms-python.vscode-pylance
+    - ms-toolsai.jupyter
+    - redhat.vscode-yaml
+    - rust-lang.rust
+    - svelte.svelte-vscode
+    - timonwong.shellcheck
+    - zbr.vscode-ansible
