@@ -19,6 +19,22 @@
       - "{{ cli_install_dir }}/Brewfile"
     removes: "{{ cli_install_dir }}/Brewfile"
 
+- name: Download rustup
+  get_url:
+    url: https://sh.rustup.rs
+    dest: "{{ cli_install_dir }}/rustup-init"
+    mode: "0755"
+    owner: "{{ cli_user }}"
+
+- name: Install rust toolchain
+  command:
+    argv:
+      - "{{ cli_install_dir }}/rustup-init"
+      - -q
+      - -y
+      - --no-modify-path
+    creates: "{{ cli_home }}/.cargo/*"
+
 - name: Install VSCode extension
   command:
     argv:

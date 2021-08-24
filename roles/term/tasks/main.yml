@@ -45,6 +45,8 @@
   get_url:
     url: https://get.oh-my.fish
     dest: "{{ cli_install_dir }}/install.omf"
+    mode: "0755"
+    owner: "{{ cli_user }}"
 
 - name: Install Oh-my-fish
   command:
