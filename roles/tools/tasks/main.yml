@@ -37,6 +37,13 @@
     - timonwong.shellcheck
     - zbr.vscode-ansible
 
+- name: Install idea CLI start script
+  copy:
+    src: idea
+    dest: /usr/local/bin/idea
+    mode: "0755"
+    owner: "{{ cli_user }}"
+
 - name: Install remove gone git branches script
   copy:
     src: git-remove-branches.sh
