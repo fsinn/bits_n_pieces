@@ -26,6 +26,10 @@ To do that, open `iTerm2 -> Preferences -> Profiles` (or, `command(⌘) + ;`), s
 To show or hide all iTerm2 windows, thus quickly switching between iTerm2 and other applications, go to `iTerm2 -> Preferences -> Keys -> Hotkeys` and select the checkbox _Show/hide all windows with a system-wide hotkey_.
 Afterwards, set the hotkey: I personally prefer `control(^) + ^`, but use whatever works for you.
 
+# IntelliJ IDEA
+
+To import settings, use the appropriate function in IntelliJ's UI and select the settings zip file in `roles/settings/files`.
+
 # Virtual Box
 
 VirtualBox needs a Kernel Extension to be enabled in order to run correctly.
