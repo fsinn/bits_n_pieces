@@ -17,7 +17,7 @@
   file:
     path: "{{ cli_home }}/Library/Application\ Support/Code/User"
     state: directory
-    mode: "0754"
+    mode: "0755"
     owner: "{{ cli_user }}"
   register: cli_vscode_settings
 
@@ -32,9 +32,16 @@
     mode: "0644"
     owner: "{{ cli_user }}"
 
-- name: Install .gitconfig
+- name: Install global .gitconfig
   template:
     src: .gitconfig.j2
     dest: "{{ cli_home }}/.gitconfig"
+    mode: "0644"
+    owner: "{{ cli_user }}"
+
+- name: Install work .gitconfig overrides
+  template:
+    src: .gitconfig_work.j2
+    dest: "{{ cli_work_projects_dir }}/.gitconfig"
     mode: "0644"
     owner: "{{ cli_user }}"

@@ -3,7 +3,7 @@
   file:
     path: "{{ cli_home }}/Library/Application\ Support/iTerm2/DynamicProfiles"
     state: directory
-    mode: "0754"
+    mode: "0755"
     owner: "{{ cli_user }}"
   register: cli_iterm_profiles_dir
 

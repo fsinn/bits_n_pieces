@@ -3,13 +3,32 @@
   file:
     path: "{{ cli_home }}/.cli"
     state: directory
-    mode: "0754"
+    mode: "0755"
     owner: "{{ cli_user }}"
   register: cli_dir
 
 - name: Set installation directory variable
   set_fact:
     cli_install_dir: "{{ cli_dir.path }}"
+
+- name: Create private projects dir
+  file:
+    path: "{{ cli_home }}/Documents/Code/projects"
+    state: directory
+    mode: "0755"
+    owner: "{{ cli_user }}"
+
+- name: Create work projects dir
+  file:
+    path: "{{ cli_home }}/Documents/Code/work"
+    state: directory
+    mode: "0755"
+    owner: "{{ cli_user }}"
+  register: cli_work_dir
+
+- name: Set work projects directory variable
+  set_fact:
+    cli_work_projects_dir: "{{ cli_work_dir.path }}"
 
 - name: Check whether command line tools are already installed
   command:
