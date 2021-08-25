@@ -79,7 +79,8 @@ The interesting thing is calling `fish` to install omf: I use the `-l` flag to r
 Make sure that you "Allow apps downloaded from" the "App Store and identifier developers" under MacOS `System Preferences -> Security & Privacy.
 I will not temporarily disable Gatekeeper during the installation.
 
-# Resources
+# Kudos
 
 - [Toptal](https://www.toptal.com/developers/gitignore/api/linux,macos,windows,intellij+all,visualstudiocode,vim,git) for generating my .gitignore
 - [mbadolato](https://github.com/mbadolato/iTerm2-Color-Schemes#solarized-dark---patched) for providing a patches Solarized Dark color scheme for iterm2
+- [aMarcireau](https://app.vagrantup.com/amarcireau/boxes/macos) for providing a very clean, stripped-down MacOS vagrant box
