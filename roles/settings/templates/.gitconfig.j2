@@ -7,3 +7,5 @@
 	ff = only
 [init]
 	defaultBranch = master
+[includeIf "gitdir:{{ cli_work_projects_dir }}/"]
+    path = {{ cli_work_projects_dir }}/.gitconfig

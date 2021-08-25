@@ -11,6 +11,22 @@ Use at your own risk.
 
 Simply execute `./install.sh` from the repository root.
 It will install brew and ansible, the two prerequisites, and then start the ansible playbook.
+You will be prompted for the BECOME password which is the password you use to execute commands with `sudo`.
+
+Then, you will need to entersome variable values for git configuration.
+I use two seperate git environments, one for work and one for private projects, where I configure different commit names and mail addresses.
+I achieved this using git's [conditional includes](https://git-scm.com/docs/git-config#_conditional_includes).
+
+If you want to, you can define some (or all) of these variables as extra variables by calling, for example:
+
+```shell
+$ ./install.sh -e "cli_commit_name=\"Hugh Mungus\" cli_mail=hugh@mung.us cli_work_mail=hugh.mungus@foo.bar"
+```
+
+You will still be asked for the full/nick name to use for work but it will default to `cli_commit_name`.
+
+All arguments passed to `install.sh` will be passed on to the `ansible-playbook` command as is.
+Please be aware that correct quoting is required for this to work!
 
 **NOTE** You will be prompted to install Apple's Command Line Tools if not already installed.
 This will open a popup and you will have to agree to License Agreements.

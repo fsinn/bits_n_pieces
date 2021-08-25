@@ -10,6 +10,15 @@
       prompt: Enter your full/nick name (for git commits)
       private: no
       unsafe: yes
+    - name: cli_work_mail
+      prompt: Enter your work mail address (for git commits)
+      private: no
+      unsafe: yes
+    - name: cli_work_commit_name
+      prompt: Enter your work full/nick name (for git commits)
+      private: no
+      unsafe: yes
+      default: "{{ cli_commit_name }}"
   roles:
     - common
     - tools
