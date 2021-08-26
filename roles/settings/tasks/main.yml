@@ -13,6 +13,14 @@
     mode: "0644"
     owner: "{{ cli_user }}"
 
+- name: Install sdk for fish
+  command:
+    argv:
+      - omf
+      - install
+      - sdk
+    creates: "{{ cli_install_dir }}/.local/share/omf/pkg/sdk/*"
+
 - name: Create VSCode user settings directory
   file:
     path: "{{ cli_home }}/Library/Application\ Support/Code/User"
