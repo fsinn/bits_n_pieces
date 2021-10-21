@@ -64,3 +64,15 @@
     dest: /usr/local/bin/git-remove-branches.sh
     mode: "0755"
     owner: "{{ cli_user }}"
+
+- name: Get sdkman installer
+  get_url:
+    url: https://get.sdkman.io?rcupdate=false
+    dest: "{{ cli_install_dir }}/.sdkman_install"
+
+- name: Install sdkman
+  command:
+    argv:
+      - bash
+      - "{{ cli_install_dir }}/.sdkman_install"
+    creates: "{{ cli_home }}/.sdkman"

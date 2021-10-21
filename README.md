@@ -57,7 +57,7 @@ Then, press the `Allow` next to a message similar to "System software from devel
 Simply call `vagrant up` which will provision and start a MacOS Big Sur vagrant box.
 **Note**: The first time you do this will take quite long as the vagrant box is rather large and Homebrew needs to update
 
-Then run the playbook on your local machine: `ansible-playbook -v -K -i hosts_vagrant.yml cli-playbook.yml`.
+Then run the playbook on your local machine: `ansible-playbook -v -K -i hosts_vagrant.yml -e "cli_commit_name=\"Hugh Mungus\" cli_mail=hugh@mung.us cli_work_mail=hugh.mungus@foo.bar" cli-playbook.yml`.
 The BECOME password is simply `vagrant`.
 Keep in mind that you need to confirm a UI dialog should you need to enable git.
 
@@ -70,7 +70,6 @@ Ansible's [command module](https://docs.ansible.com/ansible/latest/collections/a
 This may cause the commands to misbehave on remote targets.
 Thus, I specified fully-qualified paths to commands that are installed by brew, even though this might make the script "less portable".
 As I target MacOS, exclusively, this should not pose problems.
-The interesting thing is calling `fish` to install omf: I use the `-l` flag to run the command through a login shell to make it work.
 
 # Troubleshooting
 

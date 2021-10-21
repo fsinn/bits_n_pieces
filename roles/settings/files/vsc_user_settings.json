@@ -24,7 +24,7 @@
     "terminal.integrated.fontSize": 20,
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.cursorStyle": "line",
-    "terminal.integrated.defaultProfile.osx": "fish",
+    "terminal.integrated.defaultProfile.osx": "zsh",
     "terminal.integrated.scrollback": 10000,
     "workbench.colorTheme": "Solarized Dark",
     "terminal.integrated.drawBoldTextInBrightColors": false,
