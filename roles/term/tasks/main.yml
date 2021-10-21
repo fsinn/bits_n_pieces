@@ -16,50 +16,54 @@
   vars:
     working_directory: "{{ cli_home | regex_replace('/', '\/') }}"
 
-- name: Get current user shell
-  shell: "set -o pipefail && dscl . -read {{ cli_home | quote }} UserShell | sed 's/UserShell: //'"
-  register: cli_current_shell
-  changed_when: False
+- name: Download Oh-my-zsh
+  get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: "{{ cli_install_dir }}/install_zsh.sh"
 
-- name: Append fish path to /etc/shells
-  become: yes
-  become_method: sudo
-  lineinfile:
-    path: /etc/shells
-    state: present
-    line: "{{ cli_fish_path }}"
-
-- name: Change current user shell to fish
-  become: yes
-  become_method: sudo
+- name: Install Oh-my-zsh
   command:
     argv:
-      - chsh
-      - -s
-      - "{{ cli_fish_path }}"
-      - "{{ cli_user }}"
-  when: cli_current_shell.rc == 0 and
-    cli_current_shell.stdout != cli_fish_path
+      - sh
+      - "{{ cli_install_dir }}/install_zsh.sh"
+      - --unattended
+    creates: "{{ cli_home }}/.oh-my-zsh"
 
-- name: Download Oh-my-fish
-  get_url:
-    url: https://get.oh-my.fish
-    dest: "{{ cli_install_dir }}/install.omf"
+- name: Create zsh custom directory
+  file:
+    path: "{{ cli_install_dir }}/custom"
+    state: directory
     mode: "0755"
     owner: "{{ cli_user }}"
+  register: cli_zsh_custom_dir_obj
 
-- name: Install Oh-my-fish
-  command:
-    argv:
-      - "{{ cli_fish_path }}"
-      - -l
-      - "{{ cli_install_dir }}/install.omf"
-      - --noninteractive
-      - "--path={{ cli_install_dir }}/.local/share/omf"
-      - "--config={{ cli_install_dir }}/.config/omf"
-    creates: "{{ cli_install_dir }}/.local/share/omf/*"
+- name: Set zsh custom directory path variable
+  set_fact:
+    cli_zsh_custom_dir: "{{ cli_zsh_custom_dir_obj.path }}"
 
-- name: Install iTerm2 integration for fish
+- name: Create zsh custom plugins directory
+  file:
+    path: "{{ cli_zsh_custom_dir }}/plugins"
+    state: directory
+    mode: "0755"
+    owner: "{{ cli_user }}"
+  register: cli_zsh_plugins_dir_obj
+
+- name: Set zsh custom directory path variable
+  set_fact:
+    cli_zsh_plugins_dir: "{{ cli_zsh_plugins_dir_obj.path }}"
+
+- name: Install zsh autosuggestions
+  git:
+    repo: "https://github.com/zsh-users/zsh-autosuggestions"
+    dest: "{{ cli_zsh_plugins_dir }}/zsh-autosuggestions"
+
+- name: Install zsh syntax highlighting
+  git:
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    dest: "{{ cli_zsh_plugins_dir }}/zsh-syntax-highlighting"
+
+- name: Install iTerm2 integration for zsh
   get_url:
-    url: https://iterm2.com/shell_integration/fish
-    dest: "{{ cli_install_dir }}/.iterm2_shell_integration.fish"
+    url: https://iterm2.com/shell_integration/zsh
+    dest: "{{ cli_install_dir }}/.iterm2_zsh_integration"

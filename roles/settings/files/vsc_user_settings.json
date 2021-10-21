@@ -17,14 +17,11 @@
     "diffEditor.codeLens": true,
     "editor.minimap.enabled": false,
     "files.hotExit": "off",
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
     "debug.console.fontSize": 16,
     "terminal.integrated.fontSize": 20,
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.cursorStyle": "line",
-    "terminal.integrated.defaultProfile.osx": "fish",
+    "terminal.integrated.defaultProfile.osx": "zsh",
     "terminal.integrated.scrollback": 10000,
     "workbench.colorTheme": "Solarized Dark",
     "terminal.integrated.drawBoldTextInBrightColors": false,
@@ -46,5 +43,17 @@
     "ansible.validate.executablePath": "ansible-lint",
     "[yaml]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "[svelte]": {
+        "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "prettier.printWidth": 240,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "git.autofetch": true,
+    "git.confirmSync": false
 }
