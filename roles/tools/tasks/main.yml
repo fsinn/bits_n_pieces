@@ -61,7 +61,7 @@
 - name: Install remove gone git branches script
   copy:
     src: git-remove-branches.sh
-    dest: /usr/local/bin/git-remove-branches.sh
+    dest: /usr/local/bin/git-remove-branches
     mode: "0755"
     owner: "{{ cli_user }}"
 
