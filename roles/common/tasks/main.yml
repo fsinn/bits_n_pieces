@@ -11,6 +11,18 @@
   set_fact:
     cli_install_dir: "{{ cli_dir.path }}"
 
+- name: Create cli bin dotdir
+  file:
+    path: "{{ cli_install_dir }}/bin"
+    state: directory
+    mode: "0755"
+    owner: "{{ cli_user }}"
+  register: cli_bin_dir
+
+- name: Set cli binary directory variable
+  set_fact:
+    cli_binary_dir: "{{ cli_bin_dir.path }}"
+
 - name: Create private projects dir
   file:
     path: "{{ cli_home }}/Documents/Code/projects"
@@ -35,7 +47,6 @@
     argv:
       - xcode-select
       - -p
-    chdir: /Applications/Utilities
   ignore_errors: yes
   register: cli_tools_installed
   changed_when: False
@@ -46,5 +57,4 @@
     argv:
       - xcode-select
       - --install
-    chdir: /Applications/Utilities
   when: cli_tools_installed.rc == 2
