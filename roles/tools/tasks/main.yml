@@ -38,11 +38,10 @@
 - name: Install VSCode extension
   command:
     argv:
-      - "{{ cli_binary_dir }}/bin/code"
+      - /usr/local/bin/code
       - --install-extension
       - "{{ item }}"
     creates: "{{ cli_home }}/.vscode/extensions/{{ item | lower }}-*"
-
   loop:
     - esbenp.prettier-vscode
     - GitHub.vscode-pull-request-github
