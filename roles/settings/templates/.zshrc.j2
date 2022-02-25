@@ -104,7 +104,7 @@ DEFAULT_USER={{ cli_user }}
 
 source "{{ cli_install_dir }}/.iterm2_zsh_integration"
 
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.cli/bin:$HOME/homebrew/bin:$HOME/homebrew/sbin:$HOME/.cargo/bin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 [[ -s "{{ cli_home }}/.sdkman/bin/sdkman-init.sh" ]] && source "{{ cli_home }}/.sdkman/bin/sdkman-init.sh"
