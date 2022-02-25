@@ -1,23 +1,54 @@
 ---
-- name: Copy Brewfile
-  copy:
-    src: Brewfile
-    dest: "{{ cli_install_dir }}/Brewfile"
-    mode: "0644"
-    owner: "{{ cli_user }}"
+- name: Define brew path
+  set_fact:
+    cli_brew_path: /usr/local/bin/brew
 
-# - name: Apply Brewfile
-#   command:
-#     argv:
-#       - "{{ cli_home }}/homebrew/bin/brew"
-#       - bundle
-#       - install
-#       - -q
-#       - --cleanup
-#       - --force
-#       - --file
-#       - "{{ cli_install_dir }}/Brewfile"
-#     removes: "{{ cli_install_dir }}/Brewfile"
+- name: Install brew formulae
+  command:
+    argv:
+      - "{{ cli_brew_path }}"
+      - install
+      - -q
+      - --formulae
+      - ansible
+      - ansible-lint
+      - git
+      - jq
+      - maven
+      - maven-completion
+      - nmap
+      - ripgrep
+      - tree
+  changed_when: False
+
+- name: Tap the fonts casks
+  command:
+    argv:
+      - "{{ cli_brew_path }}"
+      - tap
+      - homebrew/cask-fonts
+  changed_when: False
+
+- name: Install brew casks
+  command:
+    argv:
+      - "{{ cli_brew_path }}"
+      - install
+      - -q
+      - --force
+      - --casks
+      - docker
+      - font-hack-nerd-font
+      - insomnia
+      - intellij-idea
+      - iterm2
+      - mockoon
+      - obsidian
+      - vagrant
+      - vagrant-manager
+      - virtualbox
+      - virtualbox-extension-pack
+      - visual-studio-code
 
 - name: Download rustup
   get_url:
@@ -61,7 +92,7 @@
 - name: Install remove gone git branches script
   copy:
     src: git-remove-branches.sh
-    dest: "{{ cli_binary_dir }}/git-remove-branches"
+    dest: "{{ cli_binary_dir }}/git-rmb"
     mode: "0755"
     owner: "{{ cli_user }}"
 
